@@ -1,5 +1,9 @@
 package com.github.alinz.reactnativewebviewbridge;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
+import android.webkit.JsResult;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 
 import com.facebook.react.bridge.ReadableArray;
@@ -7,7 +11,6 @@ import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.views.webview.ReactWebViewManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 import javax.annotation.Nullable;
@@ -34,8 +37,49 @@ public class WebViewBridgeManager extends ReactWebViewManager {
     }
 
     @Override
-    protected WebView createViewInstance(ThemedReactContext reactContext) {
+    protected WebView createViewInstance(final ThemedReactContext reactContext) {
         WebView root = super.createViewInstance(reactContext);
+        root.setWebChromeClient(new WebChromeClient(){
+            @Override
+            public boolean onJsAlert(WebView view, String url, String message,
+                                     final JsResult result) {
+                new AlertDialog.Builder(reactContext)
+                        .setTitle(reactContext.getApplicationInfo().loadLabel(reactContext.getPackageManager())).setMessage(message)
+                        .setCancelable(false)
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                                int which) {
+                                result.confirm();
+                            }
+                        }).create().show();
+                return true;
+            }
+
+            @Override
+            public boolean onJsConfirm(WebView view, String url,
+                                       String message, final JsResult result) {
+                new AlertDialog.Builder(reactContext)
+                        .setTitle(reactContext.getApplicationInfo().loadLabel(reactContext.getPackageManager()))
+                        .setMessage(message)
+                        .setPositiveButton(android.R.string.ok,
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                                        int which) {
+                                        result.confirm();
+                                    }
+                                })
+                        .setNegativeButton(android.R.string.cancel,
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                                        int which) {
+                                        result.cancel();
+                                    }
+                                }).create().show();
+
+                return true;
+            }
+        });
         root.addJavascriptInterface(new JavascriptBridge(root), "WebViewBridge");
         return root;
     }

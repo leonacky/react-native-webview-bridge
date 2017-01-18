@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4114DC5C1C187CCB003CD988 /* RCTWebViewBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 4114DC591C187CCB003CD988 /* RCTWebViewBridge.m */; };
 		4114DC5D1C187CCB003CD988 /* RCTWebViewBridgeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4114DC5B1C187CCB003CD988 /* RCTWebViewBridgeManager.m */; };
+		733799031E2F28FB008A125B /* WKWebView+SynchronousEvaluateJavaScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 733799021E2F28FB008A125B /* WKWebView+SynchronousEvaluateJavaScript.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +31,8 @@
 		4114DC5A1C187CCB003CD988 /* RCTWebViewBridgeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTWebViewBridgeManager.h; sourceTree = SOURCE_ROOT; };
 		4114DC5B1C187CCB003CD988 /* RCTWebViewBridgeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTWebViewBridgeManager.m; sourceTree = SOURCE_ROOT; };
 		4114DC5F1C187CE4003CD988 /* webviewbridge.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = webviewbridge.js; sourceTree = "<group>"; };
+		733799011E2F28FB008A125B /* WKWebView+SynchronousEvaluateJavaScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "WKWebView+SynchronousEvaluateJavaScript.h"; path = "../../../../../../../../../Users/leonacky/Desktop/WKWebView+SynchronousEvaluateJavaScript.h"; sourceTree = "<group>"; };
+		733799021E2F28FB008A125B /* WKWebView+SynchronousEvaluateJavaScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WKWebView+SynchronousEvaluateJavaScript.m"; path = "../../../../../../../../../Users/leonacky/Desktop/WKWebView+SynchronousEvaluateJavaScript.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				4114DC591C187CCB003CD988 /* RCTWebViewBridge.m */,
 				4114DC5A1C187CCB003CD988 /* RCTWebViewBridgeManager.h */,
 				4114DC5B1C187CCB003CD988 /* RCTWebViewBridgeManager.m */,
+				733799011E2F28FB008A125B /* WKWebView+SynchronousEvaluateJavaScript.h */,
+				733799021E2F28FB008A125B /* WKWebView+SynchronousEvaluateJavaScript.m */,
 			);
 			path = "React-Native-Webview-Bridge";
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 			files = (
 				4114DC5D1C187CCB003CD988 /* RCTWebViewBridgeManager.m in Sources */,
 				4114DC5C1C187CCB003CD988 /* RCTWebViewBridge.m in Sources */,
+				733799031E2F28FB008A125B /* WKWebView+SynchronousEvaluateJavaScript.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
