@@ -19,6 +19,7 @@ public class WebViewBridgeManager extends ReactWebViewManager {
     private static final String REACT_CLASS = "RCTWebViewBridge";
 
     public static final int COMMAND_SEND_TO_BRIDGE = 101;
+    public static final int COMMAND_STOP_LOADING = 102;
 
     @Override
     public String getName() {
@@ -32,6 +33,7 @@ public class WebViewBridgeManager extends ReactWebViewManager {
         Map<String, Integer> commandsMap = super.getCommandsMap();
 
         commandsMap.put("sendToBridge", COMMAND_SEND_TO_BRIDGE);
+        commandsMap.put("stopLoading", COMMAND_STOP_LOADING);
 
         return commandsMap;
     }
@@ -92,6 +94,9 @@ public class WebViewBridgeManager extends ReactWebViewManager {
             case COMMAND_SEND_TO_BRIDGE:
                 sendToBridge(root, args.getString(0));
                 break;
+            case COMMAND_STOP_LOADING:
+                stopLoading(root);
+                break;
             default:
                 //do nothing!!!!
         }
@@ -100,6 +105,10 @@ public class WebViewBridgeManager extends ReactWebViewManager {
     private void sendToBridge(WebView root, String message) {
         String script = "WebViewBridge.onMessage('" + message + "');";
         WebViewBridgeManager.evaluateJavascript(root, script);
+    }
+
+    private void stopLoading(WebView root) {
+        root.stopLoading();
     }
 
     static private void evaluateJavascript(WebView root, String javascript) {

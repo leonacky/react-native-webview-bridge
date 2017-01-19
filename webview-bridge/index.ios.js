@@ -227,6 +227,10 @@ var WebViewBridge = React.createClass({
       null
     );
   },
+  
+  stopLoading: function() {
+    WebViewBridgeManager.stopLoading(this.getWebViewBridgeHandle());
+  },
 
   sendToBridge: function (message: string) {
     WebViewBridgeManager.sendToBridge(this.getWebViewBridgeHandle(), message);
